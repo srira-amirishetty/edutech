@@ -37,13 +37,13 @@ app.use('/results', resultRoutes);
 // Error handling middleware
 app.use(errorHandler);
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+// // Serve static files from the React app
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Catch-all handler to serve the React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// // Catch-all handler to serve the React app
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
 
 const PORT = process.env.PORT || 5000;
