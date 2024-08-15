@@ -5,7 +5,7 @@ const Result = require('../models/Result');
 const Test = require('../models/Test');
 const User = require('../models/User');
 const authenticateJWT = require('../middlewares/authenticateJWT');
-const { protect } = require('../middlewares/authMiddleware');
+// const { protect } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
@@ -74,7 +74,7 @@ router.get('/:test_id', authenticateJWT, async (req, res) => {
   // @desc    Get all results (Teacher only)
 // @route   GET /api/results/all
 // @access  Private
-router.get('/all', protect, async (req, res) => {
+router.get('/all', authenticateJWT, async (req, res) => {
     if (req.user.role !== 'teacher') {
       return res.status(403).json({ message: 'Access denied. Teachers only.' });
     }
